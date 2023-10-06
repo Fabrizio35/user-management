@@ -50,7 +50,6 @@ const Login: React.FC = () => {
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-    setErrors(validate({ ...form, [name]: value }));
   };
 
   const focusHandler = (e: React.FocusEvent<HTMLInputElement, Element>) => {
