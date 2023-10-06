@@ -28,7 +28,7 @@ const validate = (form: InitialState): InitialState => {
   if (!form.password) {
     errors.password = "Enter password";
   } else if (
-    !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(form.password)
+    !/^(?=.*[a-zA-ZñÑ])(?=.*\d)[a-zA-ZñÑ\d]{8,}$/.test(form.password)
   ) {
     errors.password =
       "The password must contain at least 8 characters, including an uppercase letter, a lowercase letter, and a number";
@@ -40,37 +40,27 @@ const validate = (form: InitialState): InitialState => {
 const Login: React.FC = () => {
   const [form, setForm] = useState<InitialState>(initialState);
   const [errors, setErrors] = useState<InitialState>(initialState);
-  const [focus, setFocus] = useState(initialState);
+  const [focus, setFocus] = useState<InitialState>(initialState);
   const [viewPassword, setViewPassword] = useState<boolean>(false);
+  const [firstSelection, setFirstSelection] =
+    useState<InitialState>(initialState);
 
   const router = useRouter();
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setForm({
-      ...form,
-      [name]: value,
-    });
-    setErrors(
-      validate({
-        ...form,
-        [name]: value,
-      })
-    );
+    setForm({ ...form, [name]: value });
+    setErrors(validate({ ...form, [name]: value }));
   };
 
   const focusHandler = (e: React.FocusEvent<HTMLInputElement, Element>) => {
     const type = e.type;
     const name = e.target.name;
 
-    type === "focus"
-      ? setFocus({
-          ...focus,
-          [name]: true,
-        })
-      : type === "blur" && !errors.username && !errors.password
-      ? setFocus({ ...focus, [name]: false })
-      : null;
+    setFirstSelection({ ...firstSelection, [name]: true });
+
+    if (type === "focus") setFocus({ ...focus, [name]: true });
+    if (type === "blur") setFocus({ ...focus, [name]: false });
   };
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
@@ -98,7 +88,7 @@ const Login: React.FC = () => {
 
       <div
         className={`flex flex-col gap-1 relative transition-all duration-300 ${
-          errors.username && focus.username ? "mb-10" : null
+          errors.username && firstSelection.username ? "mb-10" : null
         }`}
       >
         <label htmlFor="username" className="text-foDark text-xl">
@@ -111,15 +101,15 @@ const Login: React.FC = () => {
           onChange={changeHandler}
           onFocus={focusHandler}
           onBlur={focusHandler}
-          className={`w-full bg-foSemiDark text-foLight p-1 px-2 text-lg outline-none ${
+          className={`w-full bg-foSemiDark text-foLight py-0.5 px-2 text-lg outline-none border-[3px] border-foSemiDark ${
             errors.username && focus.username
-              ? "border-[3px] border-red-600"
+              ? "border-red-600"
               : !errors.username
               ? "border-[3px] border-green-500"
               : null
           }`}
         />
-        {errors.username && focus.username && (
+        {errors.username && firstSelection.username && (
           <span className="absolute top-full w-full text-red-600 mt-2 text-sm">
             {errors.username}
           </span>
@@ -128,7 +118,7 @@ const Login: React.FC = () => {
 
       <div
         className={`flex flex-col gap-1 relative transition-all duration-300 ${
-          errors.password && focus.password ? "mb-3" : null
+          errors.password && firstSelection.password ? "mb-3" : null
         }`}
       >
         <label htmlFor="password" className="text-foDark text-xl">
@@ -142,9 +132,9 @@ const Login: React.FC = () => {
             onChange={changeHandler}
             onFocus={focusHandler}
             onBlur={focusHandler}
-            className={`w-full bg-foSemiDark p-1 px-2 pr-9 text-lg outline-none ${
+            className={`w-full bg-foSemiDark py-0.5 px-2 pr-9 text-lg outline-none border-[3px] border-foSemiDark ${
               errors.password && focus.password
-                ? "border-[3px] border-red-600"
+                ? "border-red-600"
                 : !errors.password
                 ? "border-[3px] border-green-500"
                 : null
@@ -160,7 +150,7 @@ const Login: React.FC = () => {
             </div>
           )}
         </div>
-        {errors.password && focus.password && (
+        {errors.password && firstSelection.password && (
           <span className="absolute top-full w-full text-red-600 mt-2 text-sm">
             {errors.password}
           </span>
