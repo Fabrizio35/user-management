@@ -1,3 +1,3 @@
 export default function Dashboard() {
-  return <main></main>;
+  return <main className="bg-foSemiLight min-h-screen"></main>;
 }

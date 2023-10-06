@@ -59,13 +59,18 @@ const Login: React.FC = () => {
     );
   };
 
-  const focusHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+  const focusHandler = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+    const type = e.type;
     const name = e.target.name;
 
-    setFocus({
-      ...focus,
-      [name]: name,
-    });
+    type === "focus"
+      ? setFocus({
+          ...focus,
+          [name]: true,
+        })
+      : type === "blur" && !errors.username && !errors.password
+      ? setFocus({ ...focus, [name]: false })
+      : null;
   };
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
@@ -80,15 +85,20 @@ const Login: React.FC = () => {
   return (
     <form
       onSubmit={submitHandler}
-      className="flex flex-col gap-5 bg-foLight px-20 py-36 rounded-xl border-2 border-foSemiDark relative"
+      className="flex flex-col gap-5 bg-foLight px-20 py-36 rounded-xl border-2 border-foSemiDark relative shadow-lg shadow-foDark/90"
     >
+      <span className="absolute top-3 left-0 right-0 text-center text-gray-500 text-sm">
+        *You can enter any username and password, it's all test
+      </span>
       <div className="relative flex flex-col">
-        <h2 className="text-4xl text-foDark font-medium underline">Login</h2>
+        <h2 className="text-4xl text-foDark font-medium underline select-none">
+          Login
+        </h2>
       </div>
 
       <div
         className={`flex flex-col gap-1 relative transition-all duration-300 ${
-          errors.username && focus.username ? "mb-12" : null
+          errors.username && focus.username ? "mb-10" : null
         }`}
       >
         <label htmlFor="username" className="text-foDark text-xl">
@@ -100,10 +110,17 @@ const Login: React.FC = () => {
           id="username"
           onChange={changeHandler}
           onFocus={focusHandler}
-          className="w-full bg-foSemiDark text-foLight p-1 px-2 text-xl outline-none"
+          onBlur={focusHandler}
+          className={`w-full bg-foSemiDark text-foLight p-1 px-2 text-lg outline-none ${
+            errors.username && focus.username
+              ? "border-[3px] border-red-600"
+              : !errors.username
+              ? "border-[3px] border-green-500"
+              : null
+          }`}
         />
         {errors.username && focus.username && (
-          <span className="absolute top-full w-full text-red-600 mt-1">
+          <span className="absolute top-full w-full text-red-600 mt-2 text-sm">
             {errors.username}
           </span>
         )}
@@ -111,7 +128,7 @@ const Login: React.FC = () => {
 
       <div
         className={`flex flex-col gap-1 relative transition-all duration-300 ${
-          errors.password && focus.password ? "mb-12" : null
+          errors.password && focus.password ? "mb-3" : null
         }`}
       >
         <label htmlFor="password" className="text-foDark text-xl">
@@ -124,7 +141,14 @@ const Login: React.FC = () => {
             id="password"
             onChange={changeHandler}
             onFocus={focusHandler}
-            className="w-full bg-foSemiDark p-1 px-2 pr-9 text-xl outline-none"
+            onBlur={focusHandler}
+            className={`w-full bg-foSemiDark p-1 px-2 pr-9 text-lg outline-none ${
+              errors.password && focus.password
+                ? "border-[3px] border-red-600"
+                : !errors.password
+                ? "border-[3px] border-green-500"
+                : null
+            }`}
           />
           {viewPassword ? (
             <div onClick={() => setViewPassword(false)}>
@@ -137,7 +161,7 @@ const Login: React.FC = () => {
           )}
         </div>
         {errors.password && focus.password && (
-          <span className="absolute top-full w-full text-red-600 mt-1">
+          <span className="absolute top-full w-full text-red-600 mt-2 text-sm">
             {errors.password}
           </span>
         )}

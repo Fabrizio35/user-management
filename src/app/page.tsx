@@ -8,7 +8,6 @@ export default function Home() {
         <h1 className="mb-10 text-5xl">User Management</h1>
         <UserIcon size="42" strokeWidth="3" />
       </div>
-
       <Login />
     </main>
   );
