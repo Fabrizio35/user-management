@@ -104,7 +104,7 @@ const Login: React.FC = () => {
             errors.username && focus.username
               ? "border-red-600"
               : !errors.username
-              ? "border-[3px] border-green-500"
+              ? "border-green-500"
               : null
           }`}
         />
@@ -117,7 +117,7 @@ const Login: React.FC = () => {
 
       <div
         className={`flex flex-col gap-1 relative transition-all duration-300 ${
-          errors.password && firstSelection.password ? "mb-3" : null
+          errors.password && firstSelection.password ? "mb-10" : null
         }`}
       >
         <label htmlFor="password" className="text-foDark text-xl">
@@ -135,7 +135,7 @@ const Login: React.FC = () => {
               errors.password && focus.password
                 ? "border-red-600"
                 : !errors.password
-                ? "border-[3px] border-green-500"
+                ? "border-green-500"
                 : null
             }`}
           />
@@ -157,7 +157,7 @@ const Login: React.FC = () => {
       </div>
       <button
         disabled={errors.username || errors.password ? true : false}
-        className="absolute bottom-5 right-0 left-0 mx-auto bg-foSemiDark w-24 h-8 text-foLight text-lg hover:bg-foDark hover:transition-colors duration-300 disabled:bg-gray-600 disabled:text-foLight disabled:cursor-not-allowed"
+        className="bg-foSemiDark w-full h-8 mt-5 text-foLight text-lg hover:bg-foDark hover:transition-colors duration-300 disabled:bg-gray-600 disabled:text-foLight disabled:cursor-not-allowed"
       >
         Log In
       </button>
