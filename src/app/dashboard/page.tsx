@@ -1,26 +1,22 @@
 "use client";
 import { useContext, useEffect } from "react";
-import { UserContext } from "@/context/userContext";
+import { UserContext } from "@/context/UserContext";
+import { useRouter } from "next/navigation";
+import UserList from "@/components/UserList";
 
 export default function Dashboard() {
-  const { state, dispatch } = useContext(UserContext);
+  const { state } = useContext(UserContext);
+  const router = useRouter();
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("https://dummyjson.com/users");
-      const data = await response.json();
-      const users = data.users;
-      dispatch({ type: "GET_USERS", payload: users });
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const users = state.users;
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (users.length < 1) router.push("/");
+  }, [users, router]);
 
-  console.log(state.users);
-
-  return <main className="bg-foSemiLight min-h-screen"></main>;
+  return (
+    <main className="bg-foSemiLight min-h-screen">
+      <UserList users={users} />
+    </main>
+  );
 }

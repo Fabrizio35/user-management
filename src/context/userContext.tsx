@@ -1,27 +1,10 @@
 "use client";
 import React, { Dispatch, createContext, useReducer } from "react";
-import { User } from "@/types/User";
-
-type StateType = {
-  users: User[];
-};
-
-type ActionType<T = any> = {
-  type: string;
-  payload?: T;
-};
+import { reducer } from "./reducer";
+import { StateType, ActionType } from "@/types/Context";
 
 const initialState: StateType = {
   users: [],
-};
-
-const reducer = (state: StateType, action: ActionType) => {
-  switch (action.type) {
-    case "GET_USERS":
-      return { ...state, users: action.payload };
-    default:
-      return state;
-  }
 };
 
 export const UserContext = createContext<{

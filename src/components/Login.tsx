@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { EyeIcon, EyeOffIcon } from "@/Icons";
 import { useRouter } from "next/navigation";
+import { UserContext } from "@/context/UserContext";
 
 interface InitialState {
   username: string;
@@ -47,6 +48,8 @@ const Login: React.FC = () => {
 
   const router = useRouter();
 
+  const { dispatch } = useContext(UserContext);
+
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -62,8 +65,20 @@ const Login: React.FC = () => {
     if (type === "blur") setFocus({ ...focus, [name]: false });
   };
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const fetchData = async () => {
+    try {
+      const response = await fetch("https://dummyjson.com/users");
+      const data = await response.json();
+      const users = data.users;
+      dispatch({ type: "GET_USERS", payload: users });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    await fetchData();
     router.push("/dashboard");
   };
 
@@ -74,10 +89,10 @@ const Login: React.FC = () => {
   return (
     <form
       onSubmit={submitHandler}
-      className="flex flex-col gap-5 bg-foLight px-20 py-36 rounded-xl border-2 border-foSemiDark relative shadow-lg shadow-foDark/90"
+      className="flex flex-col gap-5 bg-foLight w-11/12 px-10 py-20 sm:w-auto sm:px-20 sm:py-36 rounded-xl border-2 border-foSemiDark relative shadow-lg shadow-foDark/90"
     >
-      <span className="absolute top-3 left-0 right-0 text-center text-gray-500 text-sm">
-        *You can enter any username and password, it's all test
+      <span className="mx-5 sm:mx-0 absolute top-3 left-0 right-0 text-center text-gray-500 text-sm">
+        *You can enter any username and password, it&apos;s all test
       </span>
       <div className="relative flex flex-col">
         <h2 className="text-4xl text-foDark font-medium underline select-none">
@@ -141,11 +156,17 @@ const Login: React.FC = () => {
           />
           {viewPassword ? (
             <div onClick={() => setViewPassword(false)}>
-              <EyeOffIcon className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer" />
+              <EyeOffIcon
+                className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer h-6 w-6"
+                strokeWidth={2}
+              />
             </div>
           ) : (
             <div onClick={() => setViewPassword(true)}>
-              <EyeIcon className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer" />
+              <EyeIcon
+                className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer h-6 w-6"
+                strokeWidth={2}
+              />
             </div>
           )}
         </div>

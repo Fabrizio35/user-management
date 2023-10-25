@@ -1,69 +1,66 @@
 interface Props {
-  size?: string;
   className?: string;
-  strokeWidth?: string;
+  strokeWidth?: number;
 }
 
-export const EyeIcon = ({ size, className, strokeWidth }: Props) => {
+export const EyeIcon = ({ className, strokeWidth }: Props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={`icon icon-tabler icon-tabler-eye ${className}`}
-      width={size ? size : "24"}
-      height={size ? size : "24"}
-      viewBox="0 0 24 24"
-      strokeWidth={strokeWidth ? strokeWidth : "2"}
-      stroke="currentColor"
       fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      viewBox="0 0 24 24"
+      strokeWidth={strokeWidth ? strokeWidth : 1.5}
+      stroke="currentColor"
+      className={className}
     >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-      <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"></path>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+      />
     </svg>
   );
 };
 
-export const UserIcon = ({ size, className, strokeWidth }: Props) => {
+export const UserIcon = ({ className, strokeWidth }: Props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={`icon icon-tabler icon-tabler-user ${className}`}
-      width={size ? size : "24"}
-      height={size ? size : "24"}
-      viewBox="0 0 24 24"
-      strokeWidth={strokeWidth ? strokeWidth : "2"}
-      stroke="currentColor"
       fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      viewBox="0 0 24 24"
+      strokeWidth={strokeWidth ? strokeWidth : 1.5}
+      stroke="currentColor"
+      className={className}
     >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
-      <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+      />
     </svg>
   );
 };
 
-export const EyeOffIcon = ({ size, className, strokeWidth }: Props) => {
+export const EyeOffIcon = ({ className, strokeWidth }: Props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={`icon icon-tabler icon-tabler-eye-off ${className}`}
-      width={size ? size : "24"}
-      height={size ? size : "24"}
-      viewBox="0 0 24 24"
-      strokeWidth={strokeWidth ? strokeWidth : "2"}
-      stroke="currentColor"
       fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      viewBox="0 0 24 24"
+      strokeWidth={strokeWidth ? strokeWidth : 1.5}
+      stroke="currentColor"
+      className={className}
     >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M10.585 10.587a2 2 0 0 0 2.829 2.828"></path>
-      <path d="M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87"></path>
-      <path d="M3 3l18 18"></path>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
+      />
     </svg>
   );
 };

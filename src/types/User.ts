@@ -63,36 +63,15 @@ export interface Company {
   title: string;
 }
 
-export enum EyeColor {
-  Amber = "Amber",
-  Blue = "Blue",
-  Brown = "Brown",
-  Gray = "Gray",
-  Green = "Green",
-}
+export type EyeColor = "Green" | "Brown" | "Gray" | "Amber" | "Blue";
 
-export enum Gender {
-  Female = "female",
-  Male = "male",
-}
+export type Gender = "male" | "female";
 
 export interface Hair {
   color: Color;
   type: Type;
 }
 
-export enum Color {
-  Auburn = "Auburn",
-  Black = "Black",
-  Blond = "Blond",
-  Brown = "Brown",
-  Chestnut = "Chestnut",
-}
+export type Color = "Black" | "Blond" | "Brown" | "Chestnut" | "Auburn";
 
-export enum Type {
-  Curly = "Curly",
-  Straight = "Straight",
-  Strands = "Strands",
-  VeryCurly = "Very curly",
-  Wavy = "Wavy",
-}
+export type Type = "Strands" | "Curly" | "Very curly" | "Straight" | "Wavy";

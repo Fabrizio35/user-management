@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
-import { UserContextProvider } from "@/context/userContext";
+import { UserContextProvider } from "@/context/UserContext";
 
 const rubik = Rubik({
   subsets: ["latin"],
