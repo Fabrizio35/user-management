@@ -1,4 +1,4 @@
-import Login from "@/components/Login";
+import Login from "@/components/login";
 import { UserIcon } from "@/Icons";
 
 function Title(): JSX.Element {

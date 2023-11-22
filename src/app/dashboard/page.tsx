@@ -2,10 +2,10 @@ import UserList from "@/components/user-list";
 
 export default function Dashboard() {
   return (
-    <div className="bg-foSemiLight h-screen">
-      <main className="container mx-auto w-[1200px] flex flex-col items-center justify-center h-full">
+    <main className="bg-foSemiLight flex items-center justify-center">
+      <section className="container mx-auto w-[1200px] overflow-y-scroll h-screen">
         <UserList />
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }

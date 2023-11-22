@@ -84,7 +84,7 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     setErrors(validate(form));
-  }, [form]);
+  }, []);
 
   return (
     <form
