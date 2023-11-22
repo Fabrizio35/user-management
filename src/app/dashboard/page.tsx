@@ -1,22 +1,11 @@
-"use client";
-import { useContext, useEffect } from "react";
-import { UserContext } from "@/context/UserContext";
-import { useRouter } from "next/navigation";
-import UserList from "@/components/UserList";
+import UserList from "@/components/user-list";
 
 export default function Dashboard() {
-  const { state } = useContext(UserContext);
-  const router = useRouter();
-
-  const users = state.users;
-
-  useEffect(() => {
-    if (users.length < 1) router.push("/");
-  }, [users, router]);
-
   return (
-    <main className="bg-foSemiLight min-h-screen">
-      <UserList users={users} />
-    </main>
+    <div className="bg-foSemiLight h-screen">
+      <main className="container mx-auto w-[1200px] flex flex-col items-center justify-center h-full">
+        <UserList />
+      </main>
+    </div>
   );
 }

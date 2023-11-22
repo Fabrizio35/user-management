@@ -13,9 +13,9 @@ function Title(): JSX.Element {
 
 export default function Home() {
   return (
-    <main className="bg-foSemiLight min-h-screen flex items-center justify-center relative">
+    <section className="bg-foSemiLight min-h-screen flex items-center justify-center relative">
       <Title />
       <Login />
-    </main>
+    </section>
   );
 }

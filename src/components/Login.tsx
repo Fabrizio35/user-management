@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext } from "react";
 import { EyeIcon, EyeOffIcon } from "@/Icons";
 import { useRouter } from "next/navigation";
-import { UserContext } from "@/context/UserContext";
+import { UserContext } from "@/context/user-context";
 
 interface InitialState {
   username: string;
@@ -26,11 +26,11 @@ const validate = (form: InitialState): InitialState => {
     errors.username = "Username must be more than 3 characters";
   }
 
+  const regex = /^(?=.*[a-zA-ZÑñ])(?=.*[A-ZÑÑ])(?=.*[a-zñ])(?=.*\d).{8,}$/;
+
   if (!form.password) {
     errors.password = "Enter password";
-  } else if (
-    !/^(?=.*[a-zA-ZñÑ])(?=.*\d)[a-zA-ZñÑ\d]{8,}$/.test(form.password)
-  ) {
+  } else if (!regex.test(form.password)) {
     errors.password =
       "The password must contain at least 8 characters, including an uppercase letter, a lowercase letter, and a number";
   }
@@ -61,13 +61,12 @@ const Login: React.FC = () => {
 
     setFirstSelection({ ...firstSelection, [name]: true });
 
-    if (type === "focus") setFocus({ ...focus, [name]: true });
-    if (type === "blur") setFocus({ ...focus, [name]: false });
+    setFocus({ ...focus, [name]: type === "focus" ? true : false });
   };
 
   const fetchData = async () => {
     try {
-      const response = await fetch("https://dummyjson.com/users");
+      const response = await fetch("https://dummyjson.com/users?limit=0");
       const data = await response.json();
       const users = data.users;
       dispatch({ type: "GET_USERS", payload: users });
@@ -78,6 +77,7 @@ const Login: React.FC = () => {
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch({ type: "SET_ADMIN", payload: form.username });
     await fetchData();
     router.push("/dashboard");
   };

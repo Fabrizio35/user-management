@@ -2,10 +2,7 @@
 import React, { Dispatch, createContext, useReducer } from "react";
 import { reducer } from "./reducer";
 import { StateType, ActionType } from "@/types/Context";
-
-const initialState: StateType = {
-  users: [],
-};
+import { initialState } from "./reducer";
 
 export const UserContext = createContext<{
   state: StateType;
