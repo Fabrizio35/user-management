@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        foDark: "#113f67",
-        foSemiDark: "#38598b",
-        foSemiLight: "#a2a8d3",
-        foLight: "#e7eaf6",
+        foDark: "#222831",
+        foSemiDark: "#393e46",
+        foBlue: "#0092ca",
+        foLight: "#eeeeee",
       },
     },
   },

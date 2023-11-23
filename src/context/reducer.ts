@@ -12,7 +12,7 @@ export const reducer = (state: StateType, action: ActionType) => {
     case "GET_USERS":
       return { ...state, users: action.payload };
     case "SET_ADMIN":
-      return { ...state, admin: action.payload };
+      return { ...state, admin: { ...state.admin, username: action.payload } };
     default:
       return state;
   }

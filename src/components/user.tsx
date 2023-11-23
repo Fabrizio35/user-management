@@ -10,9 +10,9 @@ const User: React.FC<Props> = ({ user }) => {
     <tr
       className={`${
         user.id % 2 === 0
-          ? "bg-slate-400 hover:bg-slate-400/60"
-          : "bg-slate-500 hover:bg-slate-500/60"
-      } text-white transition-colors duration-150 cursor-pointer text-center`}
+          ? "bg-foDark/70 hover:bg-foDark/50"
+          : "bg-foDark/60 hover:bg-foDark/40"
+      } text-white transition-colors duration-200 cursor-pointer text-center`}
     >
       <td className="flex justify-center">
         <Image

@@ -84,12 +84,12 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     setErrors(validate(form));
-  }, []);
+  }, [form]);
 
   return (
     <form
       onSubmit={submitHandler}
-      className="flex flex-col gap-5 bg-foLight w-11/12 px-10 py-20 sm:w-auto sm:px-20 sm:py-36 rounded-xl border-2 border-foSemiDark relative shadow-lg shadow-foDark/90"
+      className="flex flex-col justify-center gap-5 h-full w-full lg:w-2/5 px-10 py-20 lg:py-0 rounded-xl relative bg-foBlue/50 backdrop-blur-sm"
     >
       <span className="mx-5 sm:mx-0 absolute top-3 left-0 right-0 text-center text-gray-500 text-sm">
         *You can enter any username and password, it&apos;s all test
@@ -116,11 +116,7 @@ const Login: React.FC = () => {
           onFocus={focusHandler}
           onBlur={focusHandler}
           className={`w-full bg-foSemiDark text-foLight py-0.5 px-2 text-lg outline-none border-[3px] border-foSemiDark ${
-            errors.username && focus.username
-              ? "border-red-600"
-              : !errors.username
-              ? "border-green-500"
-              : null
+            errors.username && focus.username && "border-red-600"
           }`}
         />
         {errors.username && firstSelection.username && (
@@ -147,11 +143,7 @@ const Login: React.FC = () => {
             onFocus={focusHandler}
             onBlur={focusHandler}
             className={`w-full bg-foSemiDark py-0.5 px-2 pr-9 text-lg outline-none border-[3px] border-foSemiDark ${
-              errors.password && focus.password
-                ? "border-red-600"
-                : !errors.password
-                ? "border-green-500"
-                : null
+              errors.password && focus.password && "border-red-600"
             }`}
           />
           {viewPassword ? (
@@ -178,7 +170,7 @@ const Login: React.FC = () => {
       </div>
       <button
         disabled={errors.username || errors.password ? true : false}
-        className="bg-foSemiDark w-full h-8 mt-5 text-foLight text-lg hover:bg-foDark hover:transition-colors duration-300 disabled:bg-gray-600 disabled:text-foLight disabled:cursor-not-allowed"
+        className="bg-foBlue w-full h-8 mt-5 text-foLight text-lg hover:bg-foBlue/70 hover:border-2 hover:border-white transition-colors duration-300 disabled:bg-gray-600 disabled:text-white disabled:cursor-not-allowed"
       >
         Log In
       </button>
