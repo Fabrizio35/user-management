@@ -1,4 +1,5 @@
 import { StateType, ActionType } from "@/types/Context";
+import { User } from "@/types/User";
 
 export const initialState: StateType = {
   users: [],
@@ -19,13 +20,17 @@ export const reducer = (state: StateType, action: ActionType) => {
     case "SET_USERS":
       if (action.payload === "") {
         return { ...state, users: state.usersRaw };
-      } else
-        return {
-          ...state,
-          users: state.users.filter((user) =>
-            user.firstName.toLowerCase().includes(action.payload)
-          ),
-        };
+      } else {
+        const users: User[] = state.usersRaw.filter(
+          (user) =>
+            user.firstName.toLowerCase().includes(action.payload) ||
+            user.lastName.toLowerCase().includes(action.payload) ||
+            user.username.toLowerCase().includes(action.payload) ||
+            user.email.toLowerCase().includes(action.payload)
+        );
+        if (users.length) return { ...state, users };
+        else return { ...state, users: state.usersRaw };
+      }
     default:
       return state;
   }

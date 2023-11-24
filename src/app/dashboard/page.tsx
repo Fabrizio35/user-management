@@ -4,17 +4,17 @@ import Searchbar from "@/components/search-users";
 
 export default function Dashboard() {
   return (
-    <main className="bg-foSemiLight flex flex-col items-center justify-center">
+    <div className="bg-foSemiLight flex flex-col items-center justify-center">
       <Header />
-      <div className="container mx-auto">
-        <div className="w-2/4">
+      <main className="container mx-auto">
+        <section className="w-2/4">
           <Searchbar />
-          <section className="overflow-y-scroll h-screen my-5">
+          <div className="overflow-y-scroll my-5 max-h-screen">
             <UserList />
-          </section>
-        </div>
+          </div>
+        </section>
         <section></section>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }
