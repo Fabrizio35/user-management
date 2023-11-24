@@ -6,6 +6,7 @@ interface Admin {
 
 export type StateType = {
   users: User[];
+  usersRaw: User[];
   admin: Admin;
 };
 

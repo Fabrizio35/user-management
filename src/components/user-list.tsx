@@ -12,7 +12,7 @@ const UserList: React.FC = () => {
 
   useEffect(() => {
     if (users.length < 1) router.push("/");
-  }, []);
+  }, [users]);
 
   return (
     <>

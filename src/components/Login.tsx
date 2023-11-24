@@ -89,22 +89,24 @@ const Login: React.FC = () => {
   return (
     <form
       onSubmit={submitHandler}
-      className="flex flex-col justify-center gap-5 h-full w-full lg:w-2/5 px-10 py-20 lg:py-0 rounded-xl relative bg-foBlue"
+      className="flex flex-col justify-center gap-5 h-full w-full lg:w-2/5 px-10 py-10 lg:py-0 rounded-xl relative bg-foBlue"
     >
-      <span className="mx-5 sm:mx-0 absolute top-3 left-0 right-0 text-center text-gray-700 text-base font-semibold">
-        *You can enter any username and password, it&apos;s all test
-      </span>
+      <div className="mb-5 lg:mb-0 static lg:absolute top-3 left-0 right-0 text-center text-gray-700 text-base font-semibold flex flex-col">
+        <span>
+          *You can enter any username and password, it&apos;s all test.
+        </span>
+        <span>
+          *Puedes ingresar cualquier nombre de usuario y contraseña, todo es de
+          prueba.
+        </span>
+      </div>
       <div className="relative flex flex-col">
         <h2 className="text-4xl text-foDark font-medium underline select-none">
           Login
         </h2>
       </div>
 
-      <div
-        className={`flex flex-col gap-1 relative transition-all duration-300 ${
-          errors.username && firstSelection.username ? "mb-10" : null
-        }`}
-      >
+      <div className="flex flex-col gap-1 relative">
         <label htmlFor="username" className="text-foDark text-xl">
           Username
         </label>
@@ -121,17 +123,13 @@ const Login: React.FC = () => {
           }`}
         />
         {errors.username && firstSelection.username && (
-          <span className="absolute top-full w-full text-red-700 mt-2 text-base">
+          <span className="w-full text-red-700 mt-2 text-base">
             {errors.username}
           </span>
         )}
       </div>
 
-      <div
-        className={`flex flex-col gap-1 relative transition-all duration-300 ${
-          errors.password && firstSelection.password ? "mb-10" : null
-        }`}
-      >
+      <div className="flex flex-col gap-1 relative">
         <label htmlFor="password" className="text-foDark text-xl">
           Password
         </label>
@@ -165,7 +163,7 @@ const Login: React.FC = () => {
           )}
         </div>
         {errors.password && firstSelection.password && (
-          <span className="absolute top-full w-full text-red-700 mt-2 text-base">
+          <span className="w-full text-red-700 mt-2 text-base">
             {errors.password}
           </span>
         )}
