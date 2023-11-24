@@ -89,9 +89,9 @@ const Login: React.FC = () => {
   return (
     <form
       onSubmit={submitHandler}
-      className="flex flex-col justify-center gap-5 h-full w-full lg:w-2/5 px-10 py-20 lg:py-0 rounded-xl relative bg-foBlue/50 backdrop-blur-sm"
+      className="flex flex-col justify-center gap-5 h-full w-full lg:w-2/5 px-10 py-20 lg:py-0 rounded-xl relative bg-foBlue"
     >
-      <span className="mx-5 sm:mx-0 absolute top-3 left-0 right-0 text-center text-gray-500 text-sm">
+      <span className="mx-5 sm:mx-0 absolute top-3 left-0 right-0 text-center text-gray-700 text-base font-semibold">
         *You can enter any username and password, it&apos;s all test
       </span>
       <div className="relative flex flex-col">
@@ -112,15 +112,16 @@ const Login: React.FC = () => {
           type="text"
           name="username"
           id="username"
+          placeholder="Example123"
           onChange={changeHandler}
           onFocus={focusHandler}
           onBlur={focusHandler}
-          className={`w-full bg-foSemiDark text-foLight py-0.5 px-2 text-lg outline-none border-[3px] border-foSemiDark ${
-            errors.username && focus.username && "border-red-600"
+          className={`w-full bg-foLight text-foDark py-0.5 px-2 text-lg outline-none rounded-2xl border-[3px] ${
+            errors.username && focus.username && "border-red-700"
           }`}
         />
         {errors.username && firstSelection.username && (
-          <span className="absolute top-full w-full text-red-600 mt-2 text-sm">
+          <span className="absolute top-full w-full text-red-700 mt-2 text-base">
             {errors.username}
           </span>
         )}
@@ -139,38 +140,39 @@ const Login: React.FC = () => {
             type={viewPassword ? "text" : "password"}
             name="password"
             id="password"
+            placeholder="********"
             onChange={changeHandler}
             onFocus={focusHandler}
             onBlur={focusHandler}
-            className={`w-full bg-foSemiDark py-0.5 px-2 pr-9 text-lg outline-none border-[3px] border-foSemiDark ${
-              errors.password && focus.password && "border-red-600"
+            className={`w-full bg-foLight text-foDark py-0.5 px-2 text-lg outline-none rounded-2xl border-[3px] ${
+              errors.password && focus.password && "border-red-700"
             }`}
           />
           {viewPassword ? (
             <div onClick={() => setViewPassword(false)}>
               <EyeOffIcon
-                className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer h-6 w-6"
+                className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer h-6 w-6 text-foDark"
                 strokeWidth={2}
               />
             </div>
           ) : (
             <div onClick={() => setViewPassword(true)}>
               <EyeIcon
-                className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer h-6 w-6"
+                className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer h-6 w-6 text-foDark"
                 strokeWidth={2}
               />
             </div>
           )}
         </div>
         {errors.password && firstSelection.password && (
-          <span className="absolute top-full w-full text-red-600 mt-2 text-sm">
+          <span className="absolute top-full w-full text-red-700 mt-2 text-base">
             {errors.password}
           </span>
         )}
       </div>
       <button
         disabled={errors.username || errors.password ? true : false}
-        className="bg-foBlue w-full h-8 mt-5 text-foLight text-lg hover:bg-foBlue/70 hover:border-2 hover:border-white transition-colors duration-300 disabled:bg-gray-600 disabled:text-white disabled:cursor-not-allowed"
+        className="bg-foBlue w-full h-8 mt-5 text-foLight text-xl border-2 border-foLight disabled:bg-gray-400 disabled:cursor-not-allowed disabled:border-0 rounded-2xl hover:brightness-110 transition-all duration-200"
       >
         Log In
       </button>
