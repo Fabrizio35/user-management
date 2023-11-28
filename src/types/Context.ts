@@ -8,6 +8,7 @@ export type StateType = {
   users: User[];
   usersRaw: User[];
   admin: Admin;
+  userDetail: User | undefined;
 };
 
 export type ActionType<T = any> = {

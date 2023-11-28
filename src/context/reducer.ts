@@ -7,6 +7,7 @@ export const initialState: StateType = {
   admin: {
     username: "",
   },
+  userDetail: undefined,
 };
 
 export const reducer = (state: StateType, action: ActionType) => {
@@ -16,8 +17,13 @@ export const reducer = (state: StateType, action: ActionType) => {
     case "SET_ADMIN":
       return { ...state, admin: { ...state.admin, username: action.payload } };
     case "LOGOUT":
-      return { ...state, users: [], admin: { ...state.admin, username: "" } };
-    case "SET_USERS":
+      return {
+        ...state,
+        users: [],
+        admin: { ...state.admin, username: "" },
+        userDetail: undefined,
+      };
+    case "SEARCH_USERS":
       if (action.payload === "") {
         return { ...state, users: state.usersRaw };
       } else {
@@ -32,6 +38,8 @@ export const reducer = (state: StateType, action: ActionType) => {
         if (users.length) return { ...state, users };
         else return { ...state, users: state.usersRaw };
       }
+    case "SET_USER_DETAIL":
+      return { ...state, userDetail: action.payload };
     default:
       return state;
   }

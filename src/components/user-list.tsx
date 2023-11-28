@@ -20,7 +20,7 @@ const UserList: React.FC = () => {
         <table width="100%">
           <thead className="bg-foDark text-white">
             <tr>
-              <th>Foto</th>
+              <th>Photo</th>
               <th>Name</th>
               <th>Username</th>
               <th>Email</th>
@@ -28,8 +28,8 @@ const UserList: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <User key={user.id} user={user} />
+            {users.map((user, index) => (
+              <User key={user.id} user={user} index={index} />
             ))}
           </tbody>
         </table>

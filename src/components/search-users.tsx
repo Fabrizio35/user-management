@@ -14,7 +14,7 @@ const Searchbar: React.FC = () => {
 
     const value = valueRaw.toLowerCase();
 
-    dispatch({ type: "SET_USERS", payload: value });
+    dispatch({ type: "SEARCH_USERS", payload: value });
     const users: User[] = usersRaw.filter((user) => {
       const name = `${user.firstName.toLowerCase()} ${user.lastName.toLowerCase()}}`;
       return (
@@ -34,7 +34,7 @@ const Searchbar: React.FC = () => {
           <input
             onChange={searchUsers}
             placeholder="Search users by name, username or email..."
-            className="bg-foLight w-full mt-10 p-2 border-2 border-foDark text-foDark"
+            className="bg-foLight w-full p-2 border-2 border-foDark text-foDark"
           ></input>
           {error ? <span className="text-red-600">User not found</span> : null}
         </div>
