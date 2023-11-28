@@ -21,13 +21,14 @@ export const reducer = (state: StateType, action: ActionType) => {
       if (action.payload === "") {
         return { ...state, users: state.usersRaw };
       } else {
-        const users: User[] = state.usersRaw.filter(
-          (user) =>
-            user.firstName.toLowerCase().includes(action.payload) ||
-            user.lastName.toLowerCase().includes(action.payload) ||
+        const users: User[] = state.usersRaw.filter((user) => {
+          const name = `${user.firstName.toLowerCase()} ${user.lastName.toLowerCase()}}`;
+          return (
+            name.includes(action.payload) ||
             user.username.toLowerCase().includes(action.payload) ||
             user.email.toLowerCase().includes(action.payload)
-        );
+          );
+        });
         if (users.length) return { ...state, users };
         else return { ...state, users: state.usersRaw };
       }

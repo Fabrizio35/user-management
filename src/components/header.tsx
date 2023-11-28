@@ -10,7 +10,7 @@ const Header: React.FC = () => {
 
   const username = state.admin.username;
 
-  const logout = () => {
+  const logoutHandler = () => {
     dispatch({ type: "LOGOUT" });
   };
 
@@ -25,7 +25,7 @@ const Header: React.FC = () => {
       <div className="relative flex justify-center">
         <div
           onClick={() => setOpenModal(!openModal)}
-          className="flex items-center gap-1 text-foDark cursor-pointer px-2 rounded-lg hover:bg-foBlue/80"
+          className="flex items-center gap-1 text-foDark cursor-pointer rounded-lg select-none"
         >
           <span className="text-xl">{username}</span>
           <UserCircleIcon />
@@ -33,7 +33,7 @@ const Header: React.FC = () => {
 
         {openModal ? (
           <div
-            onClick={logout}
+            onClick={logoutHandler}
             className="text-foDark absolute w-32 bg-foLight hover:bg-white cursor-pointer text-center bottom-[-40px] border-2 border-foDark flex items-center justify-center gap-2 py-1"
           >
             <span className="text-xl">Log out</span>

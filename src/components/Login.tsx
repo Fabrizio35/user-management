@@ -47,12 +47,13 @@ const Login: React.FC = () => {
     useState<InitialState>(initialState);
 
   const router = useRouter();
-
   const { dispatch } = useContext(UserContext);
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
     setForm({ ...form, [name]: value });
+    setErrors(validate({ ...form, [name]: value }));
   };
 
   const focusHandler = (e: React.FocusEvent<HTMLInputElement, Element>) => {
@@ -60,8 +61,7 @@ const Login: React.FC = () => {
     const name = e.target.name;
 
     setFirstSelection({ ...firstSelection, [name]: true });
-
-    setFocus({ ...focus, [name]: type === "focus" ? true : false });
+    setFocus({ ...focus, [name]: type === "focus" });
   };
 
   const fetchData = async () => {
@@ -84,7 +84,7 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     setErrors(validate(form));
-  }, [form]);
+  }, []);
 
   return (
     <form
@@ -115,6 +115,7 @@ const Login: React.FC = () => {
           name="username"
           id="username"
           placeholder="Example123"
+          value={form.username}
           onChange={changeHandler}
           onFocus={focusHandler}
           onBlur={focusHandler}
@@ -139,6 +140,7 @@ const Login: React.FC = () => {
             name="password"
             id="password"
             placeholder="********"
+            value={form.password}
             onChange={changeHandler}
             onFocus={focusHandler}
             onBlur={focusHandler}

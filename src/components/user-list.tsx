@@ -24,6 +24,7 @@ const UserList: React.FC = () => {
               <th>Name</th>
               <th>Username</th>
               <th>Email</th>
+              <th>Information</th>
             </tr>
           </thead>
           <tbody>
