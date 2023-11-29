@@ -32,7 +32,8 @@ export const reducer = (state: StateType, action: ActionType) => {
           return (
             name.includes(action.payload) ||
             user.username.toLowerCase().includes(action.payload) ||
-            user.email.toLowerCase().includes(action.payload)
+            user.email.toLowerCase().includes(action.payload) ||
+            user.id.toString().includes(action.payload)
           );
         });
         if (users.length) return { ...state, users };

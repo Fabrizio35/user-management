@@ -20,7 +20,8 @@ const UserList: React.FC = () => {
         <table width="100%">
           <thead className="bg-foDark text-white">
             <tr>
-              <th>Photo</th>
+              <th>ID</th>
+              <th className="hidden sm:table-cell">Photo</th>
               <th>Name</th>
               <th className="hidden sm:table-cell">Username</th>
               <th className="hidden sm:table-cell">Email</th>

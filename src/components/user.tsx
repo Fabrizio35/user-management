@@ -23,7 +23,9 @@ const User: React.FC<Props> = ({ user, index }) => {
           : "bg-foDark/60 hover:bg-foDark/40"
       } text-white transition-colors duration-200 text-center`}
     >
-      <td className="flex justify-center">
+      <td className="text-xs md:text-sm lg:text-base">{user.id}</td>
+
+      <td className="sm:flex justify-center hidden">
         <Image
           src={user.image}
           alt={`${user.firstName} ${user.lastName} image`}

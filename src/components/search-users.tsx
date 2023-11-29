@@ -20,7 +20,8 @@ const Searchbar: React.FC = () => {
       return (
         name.includes(value.toLowerCase()) ||
         user.username.toLowerCase().includes(value) ||
-        user.email.toLowerCase().includes(value)
+        user.email.toLowerCase().includes(value) ||
+        user.id.toString().includes(value)
       );
     });
     if (!users.length) setError(true);
@@ -33,7 +34,7 @@ const Searchbar: React.FC = () => {
         <div className="flex flex-col gap-2">
           <input
             onChange={searchUsers}
-            placeholder="Search users by name, username or email..."
+            placeholder="Search users by ID, name, username or email..."
             className="bg-foLight w-full p-2 border-2 border-foDark text-foDark"
           ></input>
           {error ? <span className="text-red-600">User not found</span> : null}
