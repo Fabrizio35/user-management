@@ -32,12 +32,12 @@ const UserDetail: React.FC = () => {
   return (
     <>
       {user ? (
-        <section className="w-1/4 my-10 relative p-2 flex flex-col justify-center">
+        <section className="w-full lg:w-1/4 my-10 relative p-2 bg-foSemiDark/10">
           <div
             onClick={closeUserDetail}
-            className="absolute text-red-600 bg-foLight rounded-full top-[-20px] left-[-20px] cursor-pointer hover:text-red-400"
+            className="absolute text-red-600 bg-foLight rounded-full top-[-13px] left-[-13px] cursor-pointer hover:text-red-400"
           >
-            <CloseCircle className="w-8 h-8" />
+            <CloseCircle className="w-6 h-6" />
           </div>
           <div className="flex gap-5 mb-5">
             <Image
@@ -45,7 +45,7 @@ const UserDetail: React.FC = () => {
               alt={`${user.firstName} ${user.lastName} image`}
               width={100}
               height={100}
-              className="bg-gray-300"
+              className="bg-gray-300 object-cover"
             />
             <div className="flex flex-col text-lg text-foDark justify-between">
               <span>
@@ -70,7 +70,7 @@ const UserDetail: React.FC = () => {
             {fields.map((field, index) => (
               <div
                 key={field.id}
-                className={`flex flex-col justify-center items-center ${
+                className={`flex flex-col justify-center items-center text-center ${
                   index === fields.length - 1 ? "col-span-2" : null
                 }`}
               >

@@ -4,9 +4,9 @@ import UsersSection from "../views/users-section";
 
 export default function Dashboard() {
   return (
-    <div className="bg-foLight flex flex-col max-h-screen">
+    <div className="bg-foLight flex flex-col min-h-screen">
       <Header />
-      <main className="container mx-auto flex overflow-y-hidden gap-10">
+      <main className="container mx-auto flex flex-col lg:flex-row lg:gap-10 px-10 sm:px-0">
         <UsersSection />
         <UserDetail />
       </main>

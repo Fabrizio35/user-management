@@ -12,8 +12,8 @@ const UsersSection: React.FC = () => {
   return (
     <section
       className={`${
-        userDetail ? "w-3/4" : "w-full"
-      } flex flex-col max-h-full my-10 gap-5 overflow-y-hidden`}
+        userDetail ? "lg:w-3/4" : "w-full"
+      } flex flex-col mt-10 lg:my-10 gap-5 max-h-screen`}
     >
       <Searchbar />
       <div className="overflow-y-scroll">

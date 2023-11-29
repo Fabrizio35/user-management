@@ -22,8 +22,8 @@ const UserList: React.FC = () => {
             <tr>
               <th>Photo</th>
               <th>Name</th>
-              <th>Username</th>
-              <th>Email</th>
+              <th className="hidden sm:table-cell">Username</th>
+              <th className="hidden sm:table-cell">Email</th>
               <th>Information</th>
             </tr>
           </thead>

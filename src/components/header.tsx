@@ -16,9 +16,9 @@ const Header: React.FC = () => {
 
   return (
     <header className="w-full bg-foBlue/70 flex items-center justify-around py-2">
-      <div className="font-medium gap-2 select-none flex text-foDark">
+      <div className="font-medium gap-2 select-none flex text-foDark items-center">
         <h1 className="hidden sm:flex sm:text-3xl">User Management</h1>
-        <h1 className="flex sm:hidden text-5xl">UM</h1>
+        <h1 className="flex sm:hidden text-4xl">UM</h1>
         <UserIcon className="h-8 w-8" strokeWidth={2.5} />
       </div>
 

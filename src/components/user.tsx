@@ -27,23 +27,27 @@ const User: React.FC<Props> = ({ user, index }) => {
         <Image
           src={user.image}
           alt={`${user.firstName} ${user.lastName} image`}
-          width={45}
-          height={45}
+          width={40}
+          height={40}
         />
       </td>
 
-      <td>
+      <td className="text-xs md:text-sm lg:text-base">
         {user.firstName} {user.lastName}
       </td>
 
-      <td>{user.username}</td>
+      <td className="hidden sm:table-cell text-xs md:text-sm lg:text-base">
+        {user.username}
+      </td>
 
-      <td>{user.email}</td>
+      <td className="hidden sm:table-cell text-xs md:text-sm lg:text-base">
+        {user.email}
+      </td>
 
       <td>
         <button
           onClick={setUserHandler}
-          className="bg-foLight text-foDark py-0.5 px-2 hover:bg-white cursor-pointer"
+          className="bg-foLight text-foDark text-sm md:text-base py-0 md:py-0.5 px-1 md:px-2 hover:bg-white cursor-pointer"
         >
           +Info
         </button>
