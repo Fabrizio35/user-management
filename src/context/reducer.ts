@@ -4,6 +4,7 @@ import { User } from "@/types/User";
 export const initialState: StateType = {
   users: [],
   usersRaw: [],
+  searchUsers: [],
   admin: {
     username: "",
   },
@@ -25,10 +26,10 @@ export const reducer = (state: StateType, action: ActionType) => {
       };
     case "SEARCH_USERS":
       if (action.payload === "") {
-        return { ...state, users: state.usersRaw };
+        return { ...state, users: state.usersRaw, searchUsers: [] };
       } else {
         const users: User[] = state.usersRaw.filter((user) => {
-          const name = `${user.firstName.toLowerCase()} ${user.lastName.toLowerCase()}}`;
+          const name = `${user.firstName.toLowerCase()} ${user.lastName.toLowerCase()}`;
           return (
             name.includes(action.payload) ||
             user.username.toLowerCase().includes(action.payload) ||
@@ -36,11 +37,38 @@ export const reducer = (state: StateType, action: ActionType) => {
             user.id.toString().includes(action.payload)
           );
         });
-        if (users.length) return { ...state, users };
-        else return { ...state, users: state.usersRaw };
+        return {
+          ...state,
+          users: users.length ? users : state.usersRaw,
+          searchUsers: users.length ? users : [],
+        };
       }
     case "SET_USER_DETAIL":
       return { ...state, userDetail: action.payload };
+    case "ORDER_ALPH":
+      return {
+        ...state,
+        users:
+          action.payload === "A-Z"
+            ? [...state.users].sort((a, b) => {
+                return a.firstName.localeCompare(b.firstName);
+              })
+            : action.payload === "Z-A"
+            ? [...state.users].sort((a, b) => {
+                return b.firstName.localeCompare(a.firstName);
+              })
+            : state.searchUsers.length
+            ? state.searchUsers
+            : state.usersRaw,
+      };
+    case "FILTER_BY_AGE":
+      const users: User[] = state.usersRaw.filter(
+        (user) => user.age >= action.payload
+      );
+      return {
+        ...state,
+        users: users.length ? users : state.usersRaw,
+      };
     default:
       return state;
   }
