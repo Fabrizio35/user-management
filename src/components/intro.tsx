@@ -1,4 +1,4 @@
-import { UserIcon } from "@/Icons";
+import { UserIcon } from "@/icons/Icons";
 
 export default function Intro(): JSX.Element {
   return (

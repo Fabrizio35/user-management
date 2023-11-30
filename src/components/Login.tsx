@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useContext } from "react";
-import { EyeIcon, EyeOffIcon } from "@/Icons";
+import { EyeIcon, EyeOffIcon } from "@/icons/Icons";
 import { useRouter } from "next/navigation";
 import { UserContext } from "@/context/user-context";
 

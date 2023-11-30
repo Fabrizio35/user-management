@@ -1,5 +1,6 @@
 import { StateType, ActionType } from "@/types/Context";
 import { User } from "@/types/User";
+import searchFilter from "@/utils/search-filter";
 
 export const initialState: StateType = {
   users: [],
@@ -28,15 +29,7 @@ export const reducer = (state: StateType, action: ActionType) => {
       if (action.payload === "") {
         return { ...state, users: state.usersRaw, searchUsers: [] };
       } else {
-        const users: User[] = state.usersRaw.filter((user) => {
-          const name = `${user.firstName.toLowerCase()} ${user.lastName.toLowerCase()}`;
-          return (
-            name.includes(action.payload) ||
-            user.username.toLowerCase().includes(action.payload) ||
-            user.email.toLowerCase().includes(action.payload) ||
-            user.id.toString().includes(action.payload)
-          );
-        });
+        const users: User[] = searchFilter(state.usersRaw, action.payload);
         return {
           ...state,
           users: users.length ? users : state.usersRaw,

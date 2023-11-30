@@ -2,6 +2,7 @@
 import { UserContext } from "@/context/user-context";
 import { useContext, useState } from "react";
 import { User } from "@/types/User";
+import searchFilter from "@/utils/search-filter";
 
 const Searchbar: React.FC = () => {
   const { dispatch, state } = useContext(UserContext);
@@ -10,20 +11,11 @@ const Searchbar: React.FC = () => {
   const usersRaw = state.usersRaw;
 
   const searchUsers = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const valueRaw = e.target.value;
-
-    const value = valueRaw.toLowerCase();
+    const value = e.target.value;
 
     dispatch({ type: "SEARCH_USERS", payload: value });
-    const users: User[] = usersRaw.filter((user) => {
-      const name = `${user.firstName.toLowerCase()} ${user.lastName.toLowerCase()}}`;
-      return (
-        name.includes(value.toLowerCase()) ||
-        user.username.toLowerCase().includes(value) ||
-        user.email.toLowerCase().includes(value) ||
-        user.id.toString().includes(value)
-      );
-    });
+    const users: User[] = searchFilter(usersRaw, value);
+
     if (!users.length) setError(true);
     else setError(false);
   };
@@ -37,7 +29,7 @@ const Searchbar: React.FC = () => {
             placeholder="Search users by ID, name, username or email..."
             className="bg-foLight w-full p-2 border-2 border-foDark text-foDark"
           ></input>
-          {error ? <span className="text-red-600">User not found</span> : null}
+          {error && <span className="text-red-600">User not found</span>}
         </div>
       ) : null}
     </>

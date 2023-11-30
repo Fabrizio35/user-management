@@ -1,6 +1,6 @@
 import Header from "@/components/header";
 import UserDetail from "@/components/user-detail";
-import UsersSection from "../views/users-section";
+import UsersSection from "@/views/users-section";
 
 export default function Dashboard() {
   return (

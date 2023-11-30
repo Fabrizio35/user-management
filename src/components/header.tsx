@@ -1,8 +1,8 @@
 "use client";
-import { UserIcon, UserCircleIcon } from "@/Icons";
+import { UserIcon, UserCircleIcon } from "@/icons/Icons";
 import { useContext, useState } from "react";
 import { UserContext } from "@/context/user-context";
-import { LogoutIcon } from "@/Icons";
+import { LogoutIcon } from "@/icons/Icons";
 
 const Header: React.FC = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);

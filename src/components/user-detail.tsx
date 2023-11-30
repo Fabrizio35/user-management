@@ -1,7 +1,7 @@
 "use client";
 import { useContext } from "react";
 import { UserContext } from "@/context/user-context";
-import { CloseCircle } from "@/Icons";
+import { CloseCircle } from "@/icons/Icons";
 import Image from "next/image";
 
 const UserDetail: React.FC = () => {
