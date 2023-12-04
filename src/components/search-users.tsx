@@ -23,11 +23,11 @@ const Searchbar: React.FC = () => {
   return (
     <>
       {usersRaw.length ? (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 w-full">
           <input
             onChange={searchUsers}
             placeholder="Search users by ID, name, username or email..."
-            className="bg-foLight w-full p-2 border-2 border-foDark text-foDark"
+            className="bg-foLight p-2 border-2 border-foDark text-foDark"
           ></input>
           {error && <span className="text-red-600">User not found</span>}
         </div>

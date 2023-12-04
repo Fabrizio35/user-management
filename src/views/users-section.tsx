@@ -12,9 +12,9 @@ const UsersSection: React.FC = () => {
 
   return (
     <section
-      className={`${
-        userDetail ? "lg:w-3/4" : "w-full"
-      } flex flex-col mt-10 lg:my-10 gap-5 max-h-screen`}
+      className={`flex flex-col mt-10 my-10 gap-5 max-h-screen overflow-y-hidden ${
+        userDetail ? "w-full lg:w-3/4" : "w-full"
+      }`}
     >
       <SortFilter />
       <Searchbar />

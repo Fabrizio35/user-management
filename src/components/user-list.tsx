@@ -17,7 +17,7 @@ const UserList: React.FC = () => {
   return (
     <>
       {users.length ? (
-        <table width="100%">
+        <table width="100%" className="overflow-y-scroll">
           <thead className="bg-foDark text-white">
             <tr>
               <th>ID</th>

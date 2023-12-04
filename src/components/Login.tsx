@@ -89,9 +89,9 @@ const Login: React.FC = () => {
   return (
     <form
       onSubmit={submitHandler}
-      className="flex flex-col justify-center gap-5 h-full w-full lg:w-2/5 px-10 py-10 lg:py-0 rounded-xl relative bg-foBlue"
+      className="flex flex-col justify-center gap-5 h-full w-full lg:w-2/5 px-10 py-10 lg:py-0 rounded-xl relative bg-foBlue/50"
     >
-      <div className="mb-5 lg:mb-0 static lg:absolute top-3 left-0 right-0 text-center text-gray-700 text-base font-semibold flex flex-col">
+      <div className="mb-5 lg:mb-0 static lg:absolute top-3 left-0 right-0 text-center text-gray-500 text-sm font-semibold flex flex-col">
         <span>
           *You can enter any username and password, it&apos;s all test.
         </span>
@@ -172,7 +172,7 @@ const Login: React.FC = () => {
       </div>
       <button
         disabled={errors.username || errors.password ? true : false}
-        className="bg-foBlue w-full h-8 mt-5 text-foLight text-xl border-2 border-foLight disabled:bg-gray-400 disabled:cursor-not-allowed disabled:border-0 rounded-2xl hover:brightness-110 transition-all duration-200"
+        className="bg-foBlue/70 w-full h-8 mt-5 text-foLight text-xl border-2 border-foBlue disabled:bg-gray-400 disabled:cursor-not-allowed disabled:border-0 rounded-2xl hover:brightness-110 transition-all duration-200"
       >
         Log In
       </button>
