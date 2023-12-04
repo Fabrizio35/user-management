@@ -6,6 +6,7 @@ const SortFilter: React.FC = () => {
   const [stateSF, setState] = useState({
     orderAlph: "orderAlph",
     filterAge: 1,
+    filterGender: "filterGender",
   });
 
   const { dispatch, state } = useContext(UserContext);
@@ -26,20 +27,23 @@ const SortFilter: React.FC = () => {
 
     property === "orderAlph"
       ? dispatch({ type: "ORDER_ALPH", payload: value })
-      : dispatch({ type: "FILTER_BY_AGE", payload: value });
+      : property === "filterAge"
+      ? dispatch({ type: "FILTER_BY_AGE", payload: value })
+      : dispatch({ type: "FILTER_BY_GENDER", payload: value });
   };
 
   return (
     <>
       {users.length ? (
-        <div className="w-full flex items-center justify-around">
+        <div className="w-full flex flex-col sm:flex-row items-center justify-center sm:justify-around gap-7 sm:gap-0">
           <select
-            onChange={changeHandler}
             name="orderAlph"
             id="orderAlph"
             value={stateSF.orderAlph}
+            onChange={changeHandler}
+            className="border border-foDark"
           >
-            <option value="orderAlph">Order Alph</option>
+            <option value="orderAlph">Order Alphabetically</option>
             <option value="A-Z">A-Z</option>
             <option value="Z-A">Z-A</option>
           </select>
@@ -59,6 +63,18 @@ const SortFilter: React.FC = () => {
               <span>{stateSF.filterAge} years old</span>
             </div>
           </div>
+
+          <select
+            name="filterGender"
+            id="filterGender"
+            value={stateSF.filterGender}
+            onChange={changeHandler}
+            className="border border-foDark"
+          >
+            <option value="filterGender">Filter Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
         </div>
       ) : null}
     </>

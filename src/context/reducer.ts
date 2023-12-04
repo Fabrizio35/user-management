@@ -55,12 +55,20 @@ export const reducer = (state: StateType, action: ActionType) => {
             : state.usersRaw,
       };
     case "FILTER_BY_AGE":
-      const users: User[] = state.usersRaw.filter(
+      const usersByAge: User[] = state.usersRaw.filter(
         (user) => user.age >= action.payload
       );
       return {
         ...state,
-        users: users.length ? users : state.usersRaw,
+        users: usersByAge.length ? usersByAge : state.usersRaw,
+      };
+    case "FILTER_BY_GENDER":
+      const usersByGender: User[] = state.usersRaw.filter(
+        (user) => user.gender === action.payload
+      );
+      return {
+        ...state,
+        users: usersByGender.length ? usersByGender : state.usersRaw,
       };
     default:
       return state;
