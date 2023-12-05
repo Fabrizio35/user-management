@@ -12,8 +12,8 @@ const UsersSection: React.FC = () => {
 
   return (
     <section
-      className={`flex flex-col mt-10 my-10 gap-5 h-screen overflow-y-hidden ${
-        userDetail ? "w-full lg:w-3/4" : "w-full"
+      className={`flex flex-col gap-5 usersSection ${
+        userDetail ? "w-full xl:w-3/4" : "w-full"
       }`}
     >
       <SortFilter />

@@ -10,6 +10,7 @@ export const initialState: StateType = {
     username: "",
   },
   userDetail: undefined,
+  modalDelete: false,
 };
 
 export const reducer = (state: StateType, action: ActionType) => {
@@ -69,6 +70,24 @@ export const reducer = (state: StateType, action: ActionType) => {
       return {
         ...state,
         users: usersByGender.length ? usersByGender : state.usersRaw,
+      };
+    case "SET_MODAL_DELETE":
+      return { ...state, modalDelete: action.payload };
+    case "DELETE_USER":
+      const usersFilter: User[] = state.users.filter(
+        (user) => user.id !== action.payload
+      );
+      const usersRawFilter: User[] = state.usersRaw.filter(
+        (user) => user.id !== action.payload
+      );
+      const usersSearchFilter: User[] = state.searchUsers.filter(
+        (user) => user.id !== action.payload
+      );
+      return {
+        ...state,
+        users: usersFilter,
+        usersRaw: usersRawFilter,
+        searchUsers: usersSearchFilter,
       };
     default:
       return state;

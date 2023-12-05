@@ -29,8 +29,9 @@ const User: React.FC<Props> = ({ user, index }) => {
         <Image
           src={user.image}
           alt={`${user.firstName} ${user.lastName} image`}
-          width={40}
-          height={40}
+          width={32}
+          height={32}
+          className="h-auto w-auto"
         />
       </td>
 
@@ -49,7 +50,7 @@ const User: React.FC<Props> = ({ user, index }) => {
       <td>
         <button
           onClick={setUserHandler}
-          className="bg-foLight text-foDark text-sm md:text-base py-0 md:py-0.5 px-1 md:px-2 hover:bg-white cursor-pointer"
+          className="bg-foLight text-foDark text-sm font-semibold px-1 md:px-2 hover:bg-white cursor-pointer"
         >
           +Info
         </button>

@@ -12,3 +12,8 @@ thead {
   position: sticky;
   top: 0;
 }
+
+.usersSection {
+  max-height: 100vh;
+  margin: 2.5rem 0;
+}

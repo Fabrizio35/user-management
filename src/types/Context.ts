@@ -10,6 +10,7 @@ export type StateType = {
   searchUsers: User[];
   admin: Admin;
   userDetail: User | undefined;
+  modalDelete: boolean;
 };
 
 export type ActionType<T = any> = {
